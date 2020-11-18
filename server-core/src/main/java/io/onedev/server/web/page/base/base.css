@@ -413,7 +413,7 @@ a.disabled:not(.btn), a[disabled]:not(.btn) {
     margin-left: 0.4rem !important;
 }
 .tree-theme-human span.tree-content a {
-	color: var(--gray-dark) !important;
+	color: var(--dark-blue) !important;
 	text-decoration: none !important;
 }
 .tree-theme-human span.tree-content a:not(.selectable):hover {
@@ -549,13 +549,6 @@ table.norecords tfoot td>div {
 
 .alert.alert-loose {
 	padding: 2rem 2.25rem;	
-}
-
-.form-text a {
-	color: var(--primary);
-}
-.form-text a:hover, .form-text a:focus {
-	color: #0073e9 !important;
 }
 
 .fit-content {

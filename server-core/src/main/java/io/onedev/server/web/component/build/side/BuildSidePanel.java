@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import io.onedev.server.web.component.entity.reference.ReferencePanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
 import org.apache.wicket.markup.ComponentTag;
@@ -31,6 +32,7 @@ import io.onedev.server.model.User;
 import io.onedev.server.security.SecurityUtils;
 import io.onedev.server.util.DateUtils;
 import io.onedev.server.util.Input;
+import io.onedev.server.util.Referenceable;
 import io.onedev.server.util.criteria.Criteria;
 import io.onedev.server.web.behavior.WebSocketObserver;
 import io.onedev.server.web.component.build.ParamValuesLabel;
@@ -275,6 +277,15 @@ public abstract class BuildSidePanel extends Panel {
 			
 		});		
 
+		add(new ReferencePanel("reference") {
+
+			@Override
+			protected Referenceable getReferenceable() {
+				return getBuild();
+			}
+			
+		});
+		
 		if (SecurityUtils.canManage(getBuild()))
 			add(newDeleteLink("delete"));
 		else

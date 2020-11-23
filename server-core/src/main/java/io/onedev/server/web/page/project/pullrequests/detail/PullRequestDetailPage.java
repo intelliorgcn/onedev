@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 import javax.persistence.EntityNotFoundException;
 
+import io.onedev.server.web.component.entity.reference.ReferencePanel;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
@@ -74,6 +75,7 @@ import io.onedev.server.search.entity.pullrequest.PullRequestQuery;
 import io.onedev.server.security.SecurityUtils;
 import io.onedev.server.util.DateUtils;
 import io.onedev.server.util.ProjectScopedNumber;
+import io.onedev.server.util.Referenceable;
 import io.onedev.server.web.WebSession;
 import io.onedev.server.web.behavior.ReferenceInputBehavior;
 import io.onedev.server.web.behavior.WebSocketObserver;
@@ -725,6 +727,15 @@ public abstract class PullRequestDetailPage extends ProjectPage implements PullR
 					protected void onConfigure() {
 						super.onConfigure();
 						setVisible(!getPullRequest().isMerged() && SecurityUtils.canModify(getPullRequest()));
+					}
+					
+				});
+				
+				fragment.add(new ReferencePanel("reference") {
+
+					@Override
+					protected Referenceable getReferenceable() {
+						return getPullRequest();
 					}
 					
 				});

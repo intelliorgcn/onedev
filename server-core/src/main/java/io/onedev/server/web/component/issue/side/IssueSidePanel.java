@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import io.onedev.server.web.component.entity.reference.ReferencePanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -56,6 +57,7 @@ import io.onedev.server.search.entity.issue.StateCriteria;
 import io.onedev.server.security.SecurityUtils;
 import io.onedev.server.util.Input;
 import io.onedev.server.util.IssueUtils;
+import io.onedev.server.util.Referenceable;
 import io.onedev.server.web.ajaxlistener.AppendLoadingIndicatorListener;
 import io.onedev.server.web.behavior.WebSocketObserver;
 import io.onedev.server.web.component.entity.watches.EntityWatchesPanel;
@@ -101,6 +103,15 @@ public abstract class IssueSidePanel extends Panel {
 
 			@Override
 			protected AbstractEntity getEntity() {
+				return getIssue();
+			}
+			
+		});
+		
+		addOrReplace(new ReferencePanel("reference") {
+
+			@Override
+			protected Referenceable getReferenceable() {
 				return getIssue();
 			}
 			

@@ -1,5 +1,5 @@
 <wicket:extend>
-	<div class="pull-request-detail card m-5">
+	<div class="pull-request-detail card m-2 m-sm-5">
 		<div wicket:id="requestHeader" class="card-header align-items-center justify-content-start flex-nowrap">
 			<div class="d-flex align-items-center flex-grow-1 mr-4">
 				<div wicket:id="title" class="card-title mr-3"></div>
@@ -22,8 +22,8 @@
 					<div wicket:id="status" class="badge status mr-3 font-size-h6"></div>
 					<div class="branches font-size-lg mr-3 d-flex align-items-center">
 						<div class="text-muted">
-							<a wicket:id="user" class="text-muted"></a> wants to merge into <a wicket:id="target" class="branch link-primary"></a> 
-							from <a wicket:id="source" class="branch link-primary"></a> <span wicket:id="date"></span>
+							<a wicket:id="user" class="link-gray"></a> wants to merge into <a wicket:id="target" class="branch link-gray"></a> 
+							from <a wicket:id="source" class="branch link-gray"></a> <span wicket:id="date"></span>
 						</div>
 					</div>
 					<a wicket:id="newPullRequest" class="btn btn-primary btn-icon flex-shrink-0 ml-auto" title="Open new pull request"><wicket:svg href="plus" class="icon"/></a>
@@ -44,7 +44,7 @@
 						<wicket:svg href="tick-circle" class="icon"></wicket:svg> Commits were merged into target branch
 					</div>
 					<div wicket:id="mergedOutside" class="merged-outside text-success">
-						<wicket:svg href="tick-circle" class="icon"></wicket:svg> Commits were merged into target branch by someone outside of this pull request
+						<wicket:svg href="tick-circle" class="icon"></wicket:svg> Commits were merged into target branch outside of this pull request
 					</div>
 					<div wicket:id="squashed" class="squashed text-success">
 						<wicket:svg href="tick-circle" class="icon"></wicket:svg> Commits were squashed into a single commit on target branch
@@ -134,6 +134,7 @@
 			</div>
 		</div>
 		<div wicket:id="watches" class="watches"></div>
+		<div wicket:id="reference"></div>
 		<div wicket:id="actions" class="d-flex align-items-center justify-content-between">
 			<wicket:enclosure child="synchronize">
 			<div class="synchronize d-flex align-items-center mr-3">
@@ -145,6 +146,7 @@
 			</wicket:enclosure>
 			<a wicket:id="delete" class="delete btn btn-light-danger">Delete</a>
 		</div>
+		
     </wicket:fragment>
 	<wicket:fragment wicket:id="projectTitleFrag">
 		<a wicket:id="pullRequests" class="text-nowrap">Pull Requests</a> 

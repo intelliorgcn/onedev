@@ -191,7 +191,7 @@ public class Project extends AbstractEntity {
 	@Column(nullable=false, unique=true)
 	private String name;
 	
-	@Column(length=16384)
+	@Column(length=15000)
 	private String description;
 	
     @OneToMany(mappedBy="project")
@@ -833,6 +833,12 @@ public class Project extends AbstractEntity {
 			refCache.put(revision, optional);
 		}
 		return optional.orNull();
+	}
+	
+	@Nullable
+	public String getRefName(String revision) {
+		Ref ref = getRef(revision);
+		return ref != null? ref.getName(): null;
 	}
 	
 	@Nullable
